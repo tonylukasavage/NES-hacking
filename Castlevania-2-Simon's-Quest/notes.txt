@@ -1,0 +1,55 @@
+Town of Jova - AC 90
+Jova Woods 1 - E4 9F
+Jova Veros Bridge - 09 A0
+Veros Woods 1 - 32 A0
+Veros Woods 2 (drop) - 4F A0
+Town of Veros - 1A 92
+
+Dracula Bridge - A9 A8
+Dracula - FE B3
+
+pause 2 frames before jump whip peak holds peak for 4 frames instead of 2
+
+
+0x3BA = 0x36 enemy explosion, 0x37 for heart
+0x3B4 is base location
+
+01:82CE:29 0F     AND #$0F
+01:82D0:09 80     ORA #$80
+
+
+death HP - 0x027fb5a0
+
+
+
+Slight progress on figuring out blob jump if anyone wants to know, $0470 is where the delay value between blob jumps is stored. Still looking for what controls height of the jump
+at least when it's the only enemy on screen..
+Canight03/12/2019
+Actually, I'm wrong it's just indexed from $0468, happened to be $0470 this time
+But the value is generated from $002E, like Burb said above. Seems to be the "RNG" byte along with $002D
+Canight03/12/2019
+Yeah okay, I don't think it's possible to manipulate the blob jumps unfortunately.  Every frame,  there's a byte increased by 1 @ $001D, then also every frame the value stored at $001D is added to $002E, then every time the blob lands it grabs whatever value is in $002E, does AND #$1F; ADC #$03 which calculates the jump delay, then after the delay is over it grabs $002E again, does AND #$3F; ADC #$10 which calculates the jump height. This happens at 01:B131 for the delay and 01:B175 for the jump height if you wanna take a look
+We can't really rely on a frame counter for manipulation sinces it's running all the way from power on
+
+@BloodSweatAndCode I'm pretty sure X position of simon doesn't have anything to do with the blob jumps, only the direction. $2E does change when paused but I'm not sure on screen transitions, that's something to look into for sure. And the jump height is calculated after the delay is over, so $2E will have changed at that point. We also can't really know how much it will have changed by even if we knew $2E at the time of calculating the delay because it depends on what $1D was at that time. Also a couple more tidbits and memory locations: ($0444,X) is the jump state (0 = calculating, 1 = waiting in delay, 2 = jumping), ($0468,X) is the jump delay, and ($0456,X) is the jump height although not directly. The lower the value in $2E (and subsequently $0456,X) the higher the jump will be. It's also very disproportionate, only values of $2E lower than about #$0A will produce a jump high enough for blob boost. Small jumps are much more likely. Also, $0097 is used to track the gravity value of each sprite, so the game uses a counter at $036C,X  to see when to start applying gravity.
+
+
+ 07:C026:91 00     STA ($00),Y @ $8B00 = #$5E
+ 07:C028:C8        INY
+ 07:C029:D0 FB     BNE $C026
+ 07:C02B:E6 01     INC $0001 = #$8B
+ 07:C02D:E4 01     CPX $0001 = #$8B
+ 07:C02F:D0 F5     BNE $C026
+ 07:C031:A9 1E     LDA #$1E
+ 07:C033:8D 00 01  STA $0100 = #$1E
+ 07:C036:20 E7 C0  JSR $C0E7
+ 07:C039:20 A8 C0  JSR $C0A8
+ 07:C03C:A5 2E     LDA $002E = #$DA
+ 07:C03E:18        CLC
+ 07:C03F:65 1D     ADC $001D = #$6B
+ 07:C041:85 2E     STA $002E = #$DA
+>07:C043:4C 3C C0  JMP $C03C
+ 07:C046:48        PHA
+ 07:C047:8A        TXA
+ 07:C048:48        PHA
+ 07:C049:98        TYA

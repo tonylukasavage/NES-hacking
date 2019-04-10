@@ -1,0 +1,79 @@
+0x0040 = 
+0x0041 = floor
+0x0042 = 
+0x0051 = 
+0x0073-0x0074 = global timer?
+0x00ac = life
+0x00a1 = x
+0x00a3 = y
+0x0119 = screen type
+0x0779 = inventory bits
+0x077A = pistol ammo
+0x077B = SMG ammo
+0x077E = flash ammo
+0x077f-0x0780 = game state
+0x0797 = feet damage counter
+0x0798 = number of bars missing from feet health (8 max)
+0x0799 = clock timer?
+
+0x77f-0x780 (games states?)
+---------------------------
+0x0B2C - difficulty select -> first screen
+0x1619 - winner
+0x1720 - roof 
+0x1701 - floor 32
+
+0x40 Floor kinda?
+-----------------
+0x00 when transitioning out of floors on steps, 0x02 when transitioning into
+
+32 - 0xE9
+
+0x41 Floor
+-----------
+Roof - 0xBF
+35 - 0xB7
+34 - 0xB3
+33 - 0xAF
+32 - 0xA7
+31 - 0xA3
+
+0x0119 (screen type)
+--------------------
+* 0x1A at difficulty select, 0x0F after
+* 0X16 at cutscene screen, 0x0F after
+* 0x21 timer screen
+* 0x19 start menu
+
+Feet
+____
+walk - 1 damage per step
+run - 3 damage per step
+
+Every 256 damage you lose 1 bar of feet health.
+
+Walking on glass
+----------------
+Typically does 8 damage to feet, but turning both vertically and horizontally will sometimes do only 0, 1, or 7 damage.
+
+no damage - 3:56 -> 3:43 (13)
+
+ammo
+----
+0x077A pistol ammo
+0x077B SMG ammo
+0x077E flash ammo
+
+0x0779 inventory bits
+--------------
+flash doesn't count 
+
+0 = pistol?
+1 = smg
+2 = ???
+3 = detonator
+4 = radio
+5 = key
+6 = rocket
+7 = 5th floor blueprint
+

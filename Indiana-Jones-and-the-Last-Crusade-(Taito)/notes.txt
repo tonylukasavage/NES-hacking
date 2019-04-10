@@ -1,0 +1,4 @@
+grail selection
+---------------
+0x0603 - x index of selection
+0x0604 - y index of selection (0 is top, 1 is bottom)
