@@ -2,11 +2,20 @@
 0x0041 = floor
 0x0042 = 
 0x0051 = 
+0x0072 = tracks gamepad
 0x0073-0x0074 = global timer?
-0x00ac = life
 0x00a1 = x
 0x00a3 = y
+0x00AB = number of crooks left
+0x00ac = life
+0x00AD = number of lock in progress
+0x00AE = lock timer 1/60 second
+0x00AF = lock timer seconds
+0x00B0 = lock timer minutes
 0x0119 = screen type
+0x0497 = floor index
+0x06F0 = x pos
+0x06F1 = y pos
 0x0779 = inventory bits
 0x077A = pistol ammo
 0x077B = SMG ammo
@@ -14,7 +23,40 @@
 0x077f-0x0780 = game state
 0x0797 = feet damage counter
 0x0798 = number of bars missing from feet health (8 max)
-0x0799 = clock timer?
+0x0799 = walk counter of some kind? (affected by foot damage)
+
+0x0072 (gamepad pressed bits)
+------
+0 - right
+1 - left
+2 - down
+3 - up
+4 - start
+5 - select
+6 - B
+7 - A
+
+0x0799
+------
+# of feet left - top value of counter
+0 - 02
+1 - 04
+2 - 08
+3 - 0C
+4 - 10
+5 - 14
+6 - 18
+7 - 1C
+8 - FF
+
+0x0497
+------
+2 - 31
+3 - 32
+4 - 33
+5 - 34
+6 - 35
+7 - roof
 
 0x77f-0x780 (games states?)
 ---------------------------
@@ -77,3 +119,36 @@ flash doesn't count
 6 = rocket
 7 = 5th floor blueprint
 
+Enemy Placement RNG
+-------------------
+* Not set at beginning as enemy placement on different floors changes when making different decisions/movements in a TAS
+* Not strictly tied to clock, detonator dude shows up on TAS anytime you transition to 31st floor while the 2nd lock opens if the RNG is correct
+* Detonator guy placement decision seens to be made _before_ reaching 31st floor based on TAS replays
+* There is branching logic in the code based on how many crooks you've killed
+* if 1 enemy is left, it gets loaded as soon as you enter a floor (double gun orange guy)
+
+
+Randomixer code?
+
+ 07:C410:60        RTS -----------------------------------------
+ 07:C411:85 64     STA $0064 = #$08
+ 07:C413:A5 73     LDA $0073 = #$70
+ 07:C415:85 74     STA $0074 = #$70
+ 07:C417:A5 64     LDA $0064 = #$08
+ 07:C419:8D FF BF  STA $BFFF = #$FF
+ 07:C41C:4A        LSR
+ 07:C41D:8D FF BF  STA $BFFF = #$FF
+ 07:C420:4A        LSR
+ 07:C421:8D FF BF  STA $BFFF = #$FF
+ 07:C424:4A        LSR
+ 07:C425:8D FF BF  STA $BFFF = #$FF
+ 07:C428:4A        LSR
+ 07:C429:8D FF BF  STA $BFFF = #$FF
+ 07:C42C:A5 73     LDA $0073 = #$70
+ 07:C42E:C5 74     CMP $0074 = #$70
+ 07:C430:F0 0A     BEQ $C43C
+ 07:C432:85 74     STA $0074 = #$70
+ 07:C434:A9 80     LDA #$80
+ 07:C436:8D FF BF  STA $BFFF = #$FF
+ 07:C439:4C 17 C4  JMP $C417
+ 07:C43C:60        RTS -----------------------------------------

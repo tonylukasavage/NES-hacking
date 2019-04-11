@@ -53,3 +53,5 @@ We can't really rely on a frame counter for manipulation sinces it's running all
  07:C047:8A        TXA
  07:C048:48        PHA
  07:C049:98        TYA
+
+ Crit hit is 185 damage on last frame of weapon's existence thanks to bad weapon index of 0x80 that pushes damage value out of range before damage is applied on last frame
