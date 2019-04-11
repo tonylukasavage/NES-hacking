@@ -14,6 +14,7 @@
 0x00B0 = lock timer minutes
 0x0119 = screen type
 0x0497 = floor index
+0x049a = 8 == roof? 5 == 31st floor?
 0x06F0 = x pos
 0x06F1 = y pos
 0x0779 = inventory bits
