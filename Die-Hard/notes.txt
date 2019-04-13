@@ -117,6 +117,12 @@ flash doesn't count
 6 = rocket
 7 = 5th floor blueprint
 
+0x05e5 - bullet x
+0x0605 - bullet y
+
+0x051D = detonator guy Y
+0x051D = 0xB0 on good placement
+
 Enemy Placement RNG
 -------------------
 * Not set at beginning as enemy placement on different floors changes when making different decisions/movements in a TAS
@@ -127,41 +133,10 @@ Enemy Placement RNG
 * Initial enemy placement seed is determined by the global timer at 0x0073 which starts as soon as the game powers up and increments every frame.
 * Enemy placement is determined the first time you enter a floor
 
-Randomixer code?
-
- 07:C410:60        RTS -----------------------------------------
- 07:C411:85 64     STA $0064 = #$08
- 07:C413:A5 73     LDA $0073 = #$70
- 07:C415:85 74     STA $0074 = #$70
- 07:C417:A5 64     LDA $0064 = #$08
- 07:C419:8D FF BF  STA $BFFF = #$FF
- 07:C41C:4A        LSR
- 07:C41D:8D FF BF  STA $BFFF = #$FF
- 07:C420:4A        LSR
- 07:C421:8D FF BF  STA $BFFF = #$FF
- 07:C424:4A        LSR
- 07:C425:8D FF BF  STA $BFFF = #$FF
- 07:C428:4A        LSR
- 07:C429:8D FF BF  STA $BFFF = #$FF
- 07:C42C:A5 73     LDA $0073 = #$70
- 07:C42E:C5 74     CMP $0074 = #$70
- 07:C430:F0 0A     BEQ $C43C
- 07:C432:85 74     STA $0074 = #$70
- 07:C434:A9 80     LDA #$80
- 07:C436:8D FF BF  STA $BFFF = #$FF
- 07:C439:4C 17 C4  JMP $C417
- 07:C43C:60        RTS -----------------------------------------
-
- 0x05e5 - bullet x
- 0x0605 - bullet y
-
-
-0x051D = detonator guy Y
-0x051D = 0xB0 on good placement
-
 0x9525 execute breakpoint where floor logic begins
 
 0x007F is the key! But it's changed by EVERYTHING!
+* game start 
 * Taking damage
 * Losing a bar of foot health
 * changing floors
