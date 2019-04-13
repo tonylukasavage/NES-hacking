@@ -69,12 +69,6 @@
 0x1720 - roof 
 0x1701 - floor 32
 
-0x40 Floor kinda?
------------------
-0x00 when transitioning out of floors on steps, 0x02 when transitioning into
-
-32 - 0xE9
-
 0x41 Floor
 -----------
 Roof - 0xBF
@@ -130,7 +124,8 @@ Enemy Placement RNG
 * Detonator guy placement decision seens to be made _before_ reaching 31st floor based on TAS replays
 * There is branching logic in the code based on how many crooks you've killed
 * if 1 enemy is left, it gets loaded as soon as you enter a floor (double gun orange guy)
-
+* Initial enemy placement seed is determined by the global timer at 0x0073 which starts as soon as the game powers up and increments every frame.
+* Enemy placement is determined the first time you enter a floor
 
 Randomixer code?
 
@@ -161,11 +156,11 @@ Randomixer code?
  0x0605 - bullet y
 
 
-0x051D = det guy Y
-
+0x051D = detonator guy Y
 0x051D = 0xB0 on good placement
 
 0x9525 execute breakpoint where floor logic begins
+
 0x007F is the key! But it's changed by EVERYTHING!
 * Taking damage
 * Losing a bar of foot health
@@ -178,6 +173,7 @@ Randomixer code?
 * enemy dies
 * player dies
 * pickup gun
+* flash grenade live
 
 does not affect
 * player movement
