@@ -1,9 +1,11 @@
 0x0040 = 
 0x0041 = floor
 0x0042 = 
+0x004A = 
 0x0051 = 
 0x0072 = tracks gamepad
 0x0073-0x0074 = global timer?
+0x007F = RNG seed for floor
 0x00a1 = x
 0x00a3 = y
 0x00AB = number of crooks left
@@ -13,6 +15,7 @@
 0x00AF = lock timer seconds
 0x00B0 = lock timer minutes
 0x0119 = screen type
+0x0204-0x0207 = bullet 1? 
 0x0497 = floor index
 0x049a = 8 == roof? 5 == 31st floor?
 0x06F0 = x pos
@@ -153,3 +156,52 @@ Randomixer code?
  07:C436:8D FF BF  STA $BFFF = #$FF
  07:C439:4C 17 C4  JMP $C417
  07:C43C:60        RTS -----------------------------------------
+
+ 0x05e5 - bullet x
+ 0x0605 - bullet y
+
+
+0x051D = det guy Y
+
+0x051D = 0xB0 on good placement
+
+0x9525 execute breakpoint where floor logic begins
+0x007F is the key! But it's changed by EVERYTHING!
+* Taking damage
+* Losing a bar of foot health
+* changing floors
+* leaving inventory screen (pressing start)
+* cutscenes (ammo check, radio, etc...)
+* when seconds left on lock clock are 0, 16, 32, or 48
+* enemy fires pistol (every shot)
+* enemy enters player's visibility (can be the same enemy over and over)
+* enemy dies
+* player dies
+* pickup gun
+
+does not affect
+* player movement
+* enemy movement
+* player shooting
+* entering inventory menu (pressing start)
+* enemy fires smg
+* opening doors
+* picking up any but gun
+
+RNG seed randomizer 
+--------------------
+
+07:C4B1:60        RTS -----------------------------------------
+ 07:C4B2:A5 7F     LDA $007F = #$C2
+ 07:C4B4:29 10     AND #$10
+ 07:C4B6:0A        ASL
+ 07:C4B7:0A        ASL
+ 07:C4B8:0A        ASL
+ 07:C4B9:45 7F     EOR $007F = #$C2
+ 07:C4BB:0A        ASL
+ 07:C4BC:69 00     ADC #$00
+>07:C4BE:85 7F     STA $007F = #$C2
+ 07:C4C0:18        CLC
+ 07:C4C1:65 7E     ADC $007E = #$6D
+ 07:C4C3:85 7E     STA $007E = #$6D
+ 07:C4C5:60        RTS -----------------------------------------
