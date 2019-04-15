@@ -147,7 +147,7 @@ Enemy Placement RNG
 * enemy enters player's visibility (can be the same enemy over and over)
 * enemy dies
 * player dies
-* pickup gun
+* pickup smg, rocket, blueprint
 * flash grenade live
 
 does not affect
@@ -159,7 +159,14 @@ does not affect
 * opening doors
 * picking up any but gun
 
-RNG seed randomizer 
+Initial Seed
+------------
+* 0x24 -> 0x20 ->
+* Seed 0x024 means green guy meets you at door on first level, then there's no enemies in the initial view on the 33rd floor.
+* based on global timer at 0x0073, but still runs through seed cycling code
+* Each cycle of the initial seed has a 2 frame window, despite the global timer running every frame. This is likely due to the seed cycling code.
+
+Seed cycling code 
 --------------------
 
 07:C4B1:60        RTS -----------------------------------------
