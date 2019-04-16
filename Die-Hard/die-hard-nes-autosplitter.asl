@@ -1,8 +1,5 @@
-// Written by Tony Lukasavage 
-// discord & twitch: BloodSweatAndCode
-// github & twitter: tonylukasavage
-//
-// Questions? Bugs? Feature Requests? More splits? Ask me in the Castlevania discord: https://discord.gg/w6HMSW7
+// Written by BloodSweatAndCode 
+// discord/twitch/github: BloodSweatAndCode
 
 state("fceux") {
 	byte screenType: 0x003B1388, 0x119;
