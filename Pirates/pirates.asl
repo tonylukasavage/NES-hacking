@@ -7,19 +7,16 @@ state("fceux") {
 	ulong screen2: 0x003B1388, 0x208;
 }
 
-init {
-    vars.pressedStart = false;
-}
-
 start {
-	if (!vars.pressedStart && ((current.gamepad & 0x10) != 0)) {
-		vars.pressedStart = true;
+	// start whenever "start" is pressed
+	if ((current.gamepad & 0x10) != 0) {
 		return true;
 	}
 }
 
 split {
-	if (vars.pressedStart && current.screen1 == 0x5800C057F8F8F8F8 && current.screen2 == 0x5200C2675200C15F) {
+	// this seems to be specific enough to capture the graphics of when you return to the main screen
+	if (current.screen1 == 0x5800C057F8F8F8F8 && current.screen2 == 0x5200C2675200C15F) {
 		return true;
 	}
 }
