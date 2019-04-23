@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Layout version="1.6.1">
   <Mode>Vertical</Mode>
-  <X>1326</X>
-  <Y>723</Y>
-  <VerticalWidth>402</VerticalWidth>
-  <VerticalHeight>149</VerticalHeight>
+  <X>1306</X>
+  <Y>690</Y>
+  <VerticalWidth>373</VerticalWidth>
+  <VerticalHeight>274</VerticalHeight>
   <HorizontalWidth>-1</HorizontalWidth>
   <HorizontalHeight>-1</HorizontalHeight>
   <Settings>
@@ -67,8 +67,8 @@
         <Version>1.6</Version>
         <CurrentSplitTopColor>FF3373F4</CurrentSplitTopColor>
         <CurrentSplitBottomColor>FF153574</CurrentSplitBottomColor>
-        <VisualSplitCount>1</VisualSplitCount>
-        <SplitPreviewCount>0</SplitPreviewCount>
+        <VisualSplitCount>4</VisualSplitCount>
+        <SplitPreviewCount>1</SplitPreviewCount>
         <DisplayIcons>True</DisplayIcons>
         <ShowThinSeparators>True</ShowThinSeparators>
         <AlwaysShowLastSplit>True</AlwaysShowLastSplit>
@@ -85,12 +85,12 @@
         <OverrideTimesColor>False</OverrideTimesColor>
         <ShowBlankSplits>True</ShowBlankSplits>
         <LockLastSplit>True</LockLastSplit>
-        <IconSize>24</IconSize>
+        <IconSize>31</IconSize>
         <IconShadows>True</IconShadows>
-        <SplitHeight>3.6</SplitHeight>
+        <SplitHeight>4</SplitHeight>
         <CurrentSplitGradient>Vertical</CurrentSplitGradient>
         <BackgroundColor>00FFFFFF</BackgroundColor>
-        <BackgroundColor2>01FFFFFF</BackgroundColor2>
+        <BackgroundColor2>01979DB6</BackgroundColor2>
         <BackgroundGradient>Alternating</BackgroundGradient>
         <SeparatorLastSplit>True</SeparatorLastSplit>
         <DeltasAccuracy>Tenths</DeltasAccuracy>
@@ -98,23 +98,9 @@
         <OverrideDeltasColor>False</OverrideDeltasColor>
         <DeltasColor>FFFFFFFF</DeltasColor>
         <Display2Rows>False</Display2Rows>
-        <ShowColumnLabels>False</ShowColumnLabels>
+        <ShowColumnLabels>True</ShowColumnLabels>
         <LabelsColor>FFFFFFFF</LabelsColor>
         <Columns>
-          <Settings>
-            <Version>1.5</Version>
-            <Name>+/-</Name>
-            <Type>Delta</Type>
-            <Comparison>Current Comparison</Comparison>
-            <TimingMethod>Current Timing Method</TimingMethod>
-          </Settings>
-          <Settings>
-            <Version>1.5</Version>
-            <Name>Time</Name>
-            <Type>SplitTime</Type>
-            <Comparison>Current Comparison</Comparison>
-            <TimingMethod>Current Timing Method</TimingMethod>
-          </Settings>
           <Settings>
             <Version>1.5</Version>
             <Name>WR</Name>
@@ -129,14 +115,14 @@
       <Path>LiveSplit.Timer.dll</Path>
       <Settings>
         <Version>1.5</Version>
-        <TimerHeight>50</TimerHeight>
+        <TimerHeight>69</TimerHeight>
         <TimerWidth>225</TimerWidth>
         <TimerFormat>1.23</TimerFormat>
         <OverrideSplitColors>False</OverrideSplitColors>
         <ShowGradient>True</ShowGradient>
         <TimerColor>FFAAAAAA</TimerColor>
-        <BackgroundColor>00FFFFFF</BackgroundColor>
-        <BackgroundColor2>00FFFFFF</BackgroundColor2>
+        <BackgroundColor>00000000</BackgroundColor>
+        <BackgroundColor2>FF222222</BackgroundColor2>
         <BackgroundGradient>Plain</BackgroundGradient>
         <CenterTimer>False</CenterTimer>
         <TimingMethod>Current Timing Method</TimingMethod>
@@ -144,14 +130,24 @@
       </Settings>
     </Component>
     <Component>
+      <Path>LiveSplit.ScriptableAutoSplit.dll</Path>
+      <Settings>
+        <Version>1.5</Version>
+        <ScriptPath>C:\Users\antho\Desktop\NES\LiveSplit\Splits and Layouts\Die Hard - Any% (Beginner).asl</ScriptPath>
+        <Start>True</Start>
+        <Split>True</Split>
+        <CustomSettings />
+      </Settings>
+    </Component>
+    <Component>
       <Path>LiveSplit.WorldRecord.dll</Path>
       <Settings>
         <Version>1.6</Version>
         <TextColor>FFFFFFFF</TextColor>
-        <OverrideTextColor>False</OverrideTextColor>
-        <TimeColor>FFFFFFFF</TimeColor>
-        <OverrideTimeColor>False</OverrideTimeColor>
-        <BackgroundColor>00FFFFFF</BackgroundColor>
+        <OverrideTextColor>True</OverrideTextColor>
+        <TimeColor>FF243FE6</TimeColor>
+        <OverrideTimeColor>True</OverrideTimeColor>
+        <BackgroundColor>FF000000</BackgroundColor>
         <BackgroundColor2>00FFFFFF</BackgroundColor2>
         <BackgroundGradient>Plain</BackgroundGradient>
         <Display2Rows>False</Display2Rows>
@@ -159,16 +155,6 @@
         <FilterRegion>False</FilterRegion>
         <FilterPlatform>False</FilterPlatform>
         <FilterVariables>False</FilterVariables>
-      </Settings>
-    </Component>
-    <Component>
-      <Path>LiveSplit.ScriptableAutoSplit.dll</Path>
-      <Settings>
-        <Version>1.5</Version>
-        <ScriptPath>C:\Users\antho\Documents\GitHub\NES-hacking\Pirates\pirates.asl</ScriptPath>
-        <Start>True</Start>
-        <Split>True</Split>
-        <CustomSettings />
       </Settings>
     </Component>
   </Components>
