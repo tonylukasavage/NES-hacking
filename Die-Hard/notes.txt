@@ -17,6 +17,7 @@
 0x0119 = screen type
 0x0204-0x0207 = bullet 1? 
 0x0497 = floor index
+0x0498 = floor index (prior floor?)
 0x049a = 8 == roof? 5 == 31st floor?
 0x06F0 = x pos
 0x06F1 = y pos
@@ -183,3 +184,10 @@ Seed cycling code
  07:C4C1:65 7E     ADC $007E = #$6D
  07:C4C3:85 7E     STA $007E = #$6D
  07:C4C5:60        RTS -----------------------------------------
+
+
+01011001 0xAA 0x59
+10000000
+11011001
+10110010 C
+10110011 0x5D 0xB3
