@@ -1,5 +1,5 @@
-// Written by Tony Lukasavage 
-// discord & twitch & github: BloodSweatAndCode
+// Written by BloodSweatAndCode 
+// discord/twitch/github: BloodSweatAndCode
 
 state("fceux") {
 	byte screenType: 0x003B1388, 0x119;
