@@ -1,0 +1,1 @@
+0x0026 = gamepad (0x10 for start)

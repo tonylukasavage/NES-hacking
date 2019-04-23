@@ -1,0 +1,25 @@
+## Memory Map
+
+0x0021 = RNG seed? 
+0x006E = zero-indexed hand position3
+0x007C = day
+0x007D = game started?
+0x007E-0x007F - money
+0x008B = start index of possible activities for hand to pick
+0x00C5 = gamepad
+0x014F = number of moves left for hand
+0x01FB = "hand" counter, also used as timer for cutscenes (counts down to zero), used for other stuff too
+
+## 0x0021 (RNG seed)
+
+Starts at 0x00 and goes up 1 every 6 frames as soon as the player select cursor is visible. Entering any of the minigames seems to change the value of 0x0021 as well, so the predictability after any game seems unlikely.
+
+## 0x00C5 (gamepad bits)
+
+It's dependent on what state of the game you are in, but it is roughly like this. It could be 
+
+0 = right
+1 = left
+2 = down
+3 = up
+>= 4 = B, A, select, start
