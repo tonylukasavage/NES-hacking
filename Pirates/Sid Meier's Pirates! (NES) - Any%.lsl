@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Layout version="1.6.1">
   <Mode>Vertical</Mode>
-  <X>2033</X>
-  <Y>397</Y>
+  <X>1290</X>
+  <Y>827</Y>
   <VerticalWidth>402</VerticalWidth>
   <VerticalHeight>149</VerticalHeight>
   <HorizontalWidth>-1</HorizontalWidth>
