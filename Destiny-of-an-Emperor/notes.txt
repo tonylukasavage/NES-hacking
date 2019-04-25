@@ -1,3 +1,6 @@
+0x0062-0x0063 = x position/offset
+0x00F7 = gamepad
+
 0x60D8-0x60D9 = Liu Bei HP
 0x60CF-0x60D0 = Guan Yu HP
 0x60D3-0x60D4 = Zhang Fei HP
@@ -5,3 +8,15 @@
 0x60EC = 1st enemy HP?
 
 0xBC33 = Zhang Fei damage?
+
+
+## 0x00F7 (gamepad bits)
+
+0 - right
+1 - left
+2 - down
+3 - up
+4 - start
+5 - select
+6 - B
+7 - A
