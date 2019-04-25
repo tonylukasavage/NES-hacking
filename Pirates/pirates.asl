@@ -11,7 +11,7 @@ start {
 	// start whenever "start" is pressed
 	if ((current.gamepad & 0x10) != 0) {
 		return true;
-	}
+	}3
 }
 
 split {
