@@ -1,0 +1,33 @@
+0x00E2, 0x00E4 = gamepad bits
+0x0200 = player sprite
+0x0201 = player x camera position
+0x0202-0x0203 = player x map position
+0x0209 = player HP
+0x0220 = enemy sprite
+0x0221 = enemy x camera position
+0x0222-0x0223 = enemy x map position
+0x0228 = enemy attack
+0x0229 = enemy HP
+0x075B = player HP * 0x08
+
+## 0x00E2, 0x00E4 (gamepad bits)
+
+0 - right
+1 - left
+2 - down
+3 - up
+4 - start
+5 - select
+6 - B
+7 - A
+
+## 0x0200 (player sprite)
+
+0x01 - run stance
+0x05 - fight stance
+
+## 0x0228 (enemy attack)
+
+0 - no attack
+1 - kick
+2 - punch

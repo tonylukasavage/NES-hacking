@@ -1,0 +1,61 @@
+0x0017,0x0370 = gamepad
+0x0031-0x0034 = screen index?
+0x0043-0x0044 = boat position
+0x0057 = boat movement cooldown timer
+0x0090 = boat y position
+0x0093 = boat visibility (0xFC when visible, 0xF8 when not visible)
+0x00A1-0x00AF = text bytes (time, location, etc...)
+0x0303 = current hours
+0x0304 = current minutes
+0x0311 = boat x index
+0x0312 = boat y index
+0x0371 = gamepad
+0x0421,0x0463 = boat x position
+0x0422,0x0465 = boat y position
+0xB9F0-0xBD27 = various game text, dates, etc...
+
+## 0x0031-0x0034 (screen index?)
+
+0xE598CF99 = The Black Bass USA opening copyright screen
+0xFD98A299 = The Black Bass USA fish head screen
+0x759A769A = what is your name screen
+0x159C169C = ranking player or beginner selection screen
+0xFF9E469F = enjoy yourself screen after picking beginner
+0xE49F92A0 = lake amada description screen
+
+0xA3A4B9A4 = Amada Lake, boat view
+0x55C456C4 = Amada Lake, casting in open water
+
+0xB1A1B5A1 = choose action screen (after fishing)
+0x17A138A1 = lure selection screen
+0x9AA9B4A9 = data for this point screen 1
+0x51A9CDA9 = data for this point screen 2
+0x09A551A5 = results for today screen
+0x1DAA21AA = are you sure you want to stop screen
+0x89A58DA5 = stopped screen (ceremony & records selections)
+0x099DD29D = ceremony selected screen
+0xB69A079B = password after ceremony screen
+0x2699A999 = The Black Bass USA fish tail screen
+
+## 0x0017 (gamepad bits)
+
+0 - right
+1 - left
+2 - down
+3 - up
+4 - start
+5 - select
+6 - B
+7 - A
+
+## 0x0371 (gamepad inverse of bits)
+
+0x7F - A
+0xBF - B
+0xDF - select
+0xEF - start
+0xF7 - up
+0xFB - down
+0xFD - left
+0xFE - right
+0xFF - no movement
