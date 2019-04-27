@@ -11,8 +11,8 @@
     </Region>
     <Variables />
   </Metadata>
-  <Offset>00:00:00</Offset>
-  <AttemptCount>0</AttemptCount>
+  <Offset>-00:00:05.2000000</Offset>
+  <AttemptCount>1</AttemptCount>
   <AttemptHistory>
     <Attempt id="1" started="04/18/2019 23:07:49" isStartedSynced="True" ended="04/18/2019 23:07:55" isEndedSynced="True" />
     <Attempt id="2" started="04/18/2019 23:07:57" isStartedSynced="True" ended="04/18/2019 23:08:05" isEndedSynced="True" />
@@ -548,6 +548,7 @@
     <Attempt id="426" started="04/24/2019 01:21:50" isStartedSynced="True" ended="04/24/2019 01:21:52" isEndedSynced="True" />
     <Attempt id="427" started="04/24/2019 01:22:03" isStartedSynced="True" ended="04/24/2019 01:22:06" isEndedSynced="True" />
     <Attempt id="428" started="04/24/2019 01:22:14" isStartedSynced="True" ended="04/24/2019 01:22:21" isEndedSynced="True" />
+    <Attempt id="429" started="04/26/2019 03:30:39" isStartedSynced="True" ended="04/26/2019 03:39:14" isEndedSynced="True" />
   </AttemptHistory>
   <Segments>
     <Segment>
@@ -556,8 +557,14 @@
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
+      <BestSegmentTime>
+        <RealTime>00:02:55.7260000</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="429">
+          <RealTime>00:02:55.7260000</RealTime>
+        </Time>
+      </SegmentHistory>
     </Segment>
     <Segment>
       <Name>HEADS UP!</Name>

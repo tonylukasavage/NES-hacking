@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Layout version="1.6.1">
   <Mode>Vertical</Mode>
-  <X>1289</X>
-  <Y>644</Y>
+  <X>921</X>
+  <Y>588</Y>
   <VerticalWidth>191</VerticalWidth>
   <VerticalHeight>327</VerticalHeight>
   <HorizontalWidth>-1</HorizontalWidth>
@@ -133,7 +133,7 @@
       <Path>LiveSplit.ScriptableAutoSplit.dll</Path>
       <Settings>
         <Version>1.5</Version>
-        <ScriptPath>C:\Users\antho\Desktop\NES\LiveSplit\Splits and Layouts\Castlevania II Simon's Quest - Any%.asl</ScriptPath>
+        <ScriptPath>C:\Users\antho\Documents\GitHub\NES-hacking\Castlevania-2-Simon's-Quest\liveview-autosplitter-castlevania-2-master\cv2.asl</ScriptPath>
         <Start>True</Start>
         <Split>True</Split>
         <CustomSettings>
