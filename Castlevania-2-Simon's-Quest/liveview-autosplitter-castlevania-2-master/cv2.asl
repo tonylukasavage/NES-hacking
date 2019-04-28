@@ -1,6 +1,6 @@
-// Written by Tony Lukasavage 
+// Written by BloodSweatAndCode 
 // discord & twitch: BloodSweatAndCode
-// github & twitter: tonylukasavage
+// github: BloodSweatAndCode
 //
 // Find me in the Castlevania discord: https://discord.gg/w6HMSW7
 
