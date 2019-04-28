@@ -1,4 +1,4 @@
-// Written by Tony Lukasavage 
+// Written by BloodSweatAndCode
 // discord/twitch/github: BloodSweatAndCode
 
 state("fceux") {
