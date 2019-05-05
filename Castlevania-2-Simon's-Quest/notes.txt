@@ -55,3 +55,82 @@ We can't really rely on a frame counter for manipulation sinces it's running all
  07:C049:98        TYA
 
  Crit hit is 185 damage on last frame of weapon's existence thanks to bad weapon index of 0x80 that pushes damage value out of range before damage is applied on last frame
+
+## floor drops
+
+14 frames after a floor drop whip:
+
+```
+ 03:8298:AD 36 03  LDA y_subpixel = #$F0
+ 03:829B:18        CLC
+ 03:829C:6D 7E 03  ADC $037E = #$D8
+ 03:829F:8D 36 03  STA y_subpixel = #$F0
+>03:82A2:AD 24 03  LDA simon_y_pos = #$81
+ 03:82A5:65 93     ADC $0093 = #$00
+ 03:82A7:8D 24 03  STA simon_y_pos = #$81
+```
+
+setting sprite frame prior to floor drop sprite
+
+```
+07:DD6E:A9 00     LDA #$00
+ 07:DD70:9D FC 03  STA $03FC,X @ $03FC = #$00
+ 07:DD73:C8        INY
+ 07:DD74:B1 08     LDA ($08),Y @ $DDA6 = #$05
+ 07:DD76:18        CLC
+ 07:DD77:7D FC 03  ADC $03FC,X @ $03FC = #$00
+>07:DD7A:9D 00 03  STA $0300,X @ $0300 = #$0A
+ 07:DD7D:C8        INY
+ 07:DD7E:B1 08     LDA ($08),Y @ $DDA6 = #$05
+ 07:DD80:9D EA 03  STA $03EA,X @ $03EA = #$00
+ 07:DD83:FE FC 03  INC $03FC,X @ $03FC = #$00
+```
+
+ 03:8668:20 62 D3  JSR y delta set
+
+
+this is not equal when y delta stays the same
+
+  03:8636:AD 6C 03  LDA simon_y_delta = #$03
+ 03:8639:30 43     BMI $867E
+ 03:863B:20 FF 86  JSR $86FF
+ 03:863E:A0 10     LDY #$10
+ 03:8640:20 ED 86  JSR $86ED
+ 03:8643:C9 01     CMP #$01
+ 03:8645:F0 0E     BEQ $8655
+ 03:8647:C9 02     CMP #$02
+ 03:8649:F0 0A     BEQ $8655
+ 03:864B:A5 04     LDA $0004 = #$00
+ 03:864D:C9 01     CMP #$01
+ 03:864F:F0 04     BEQ $8655
+ 03:8651:C9 02     CMP #$02
+ 03:8653:D0 29     BNE $867E
+
+### memory values
+
+0x0008 = register that updates 0x037E (always 0x38)
+0x004B = ???
+0x0056 = ???
+0x005E = ??????
+0x0068 = ???
+0x0093 = ??? gravity
+0x00F5 = ???
+0x0324 = y position relative to top of screen (0x00 at top, 0xFF at bottom)
+0x0336 = y subpixel value (the important one)
+0x036C = y delta (????)
+0x037E = register that updates 0x0336
+0x03D8 = simon's action
+0x03FC = 
+0x0390 = related to 0x03D8
+
+### typical good values of 0x0336 for floor drops
+
+* 0x00
+* 0x08
+* 0x10
+
+### 0x00 subpixel 1-frame floor drop setup
+
+When you have a 0x00 value for your subpixel (0x0336) you can setup a floor drop when jumping up 2 blocks. To do this, you must whip jump, pressing whip on EXACTLY the 2nd frame after the jump. This is a rhythm setup and requires some practice as it is frame perfect. The ideal spot for this is the very first drop in the game just before the lizardman grind. Also, if you're crazy like Burb, the blue crystal drop is another place this works well as you can save a few seconds not doing the jump up, jump down, jump up setup. That said, if you miss it, you're in big trouble because you won't know your subpixel and you'll just have to hope you get lucky on repeated floor drop attempts.
+
+
