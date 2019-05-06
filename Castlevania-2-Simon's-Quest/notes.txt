@@ -86,7 +86,26 @@ setting sprite frame prior to floor drop sprite
  07:DD83:FE FC 03  INC $03FC,X @ $03FC = #$00
 ```
 
+
+ 03:82DE:AD 24 03  LDA simon_y_pos = #$86
+ 03:82E1:C9 10     CMP #$10
+ 03:82E3:B0 0B     BCS $82F0
+
  03:8668:20 62 D3  JSR y delta set
+
+
+### Y = 0 = 0x037E, A = 3 = 0x036C
+ 03:89F4:20 E4 DF  JSR falling code?
+ 03:89F7:30 14     BMI $8A0D
+ 03:89F9:C9 03     CMP #$03
+ 03:89FB:90 07     BCC $8A04
+ 03:89FD:A0 00     LDY #$00
+>03:89FF:A9 03     LDA #$03
+ 03:8A01:4C 62 D3  JMP y delta set
+ 03:8A04:C9 02     CMP #$02
+ 03:8A06:90 05     BCC $8A0D
+ 03:8A08:A9 00     LDA #$00
+ 03:8A0A:8D 46 04  STA $0446 = #$00
 
 
 this is not equal when y delta stays the same
@@ -133,4 +152,59 @@ this is not equal when y delta stays the same
 
 When you have a 0x00 value for your subpixel (0x0336) you can setup a floor drop when jumping up 2 blocks. To do this, you must whip jump, pressing whip on EXACTLY the 2nd frame after the jump. This is a rhythm setup and requires some practice as it is frame perfect. The ideal spot for this is the very first drop in the game just before the lizardman grind. Also, if you're crazy like Burb, the blue crystal drop is another place this works well as you can save a few seconds not doing the jump up, jump down, jump up setup. That said, if you miss it, you're in big trouble because you won't know your subpixel and you'll just have to hope you get lucky on repeated floor drop attempts.
 
+## night time door check code
 
+Changing 6->0 and 18->24 allows simon to enter doors at night, but no one's home
+
+### enter doors at night
+00C7B8 = C9 00
+00C7BC = C9 24 
+
+## allows NPCs at night
+004167 = A9 00
+
+```
+00C7B6:A5 86     LDA $0086 = #$18
+  00C7B8:C9 00     CMP #$06
+  00C7BA:90 15     BCC $87C1
+  00C7BC:C9 24     CMP #$18
+  00C7BE:B0 11     BCS $87C1
+```
+
+3ba = 2E
+
+004140:90 08     BCC $813A
+  004142:C9 30     CMP #$30
+  004144:90 0F     BCC $8145
+  004146:C9 34     CMP #$34
+  004148:F0 0B     BEQ $8145
+  00414A:A5 30     LDA $0030 = #$00
+  00414C:C9 01     CMP #$01
+  00414E:F0 05     BEQ $8145
+  004150:A5 93     LDA $0093 = #$F8
+  004152:0A        ASL
+  004153:85 93     STA $0093 = #$F8
+  004155:A5 93     LDA $0093 = #$F8
+  004157:9D C2 04  STA $04C2,X @ $04C8 = #$00
+  00415A:4C 68 81  JMP $8168
+  00415D:A5 30     LDA $0030 = #$00
+  00415F:D0 0A     BNE $815B
+  004161:A5 17     LDA $0017 = #$AE
+  004163:C9 A4     CMP #$A4
+  004165:F0 04     BEQ $815B
+  004167:A5 82     LDA $0082 = #$00
+  004169:D0 AD     BNE $8108
+  00416B:A5 17     LDA $0017 = #$AE
+  00416D:29 7F     AND #$7F
+> 00416F:9D B4 03  STA $03B4,X @ $03BA = #$00
+
+
+Sooooo glitches with the night patch so far:
+Sometimes you can't go inside doors during nights
+Boat buy won't spawn during night.
+Stake guys in mansions won't spawn if you entered during night
+Flame guy won't spawn during night.
+Basically npcs will only spawn in the towns during nights. Everywhere else is off limits.
+So the crystal guys still spawn during night since they're in towns
+I don't know how to troubleshoot that. Alternative and 100% glitchless way to do it is to just freeze the time and make it day always.
+But sounds a bit boring. Means always weaker enemies.
