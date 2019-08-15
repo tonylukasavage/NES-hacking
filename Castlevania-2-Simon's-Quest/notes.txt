@@ -1,3 +1,11 @@
+0x0030 = object set
+0x0050 = area
+
+0x0031 = submap?
+
+possible tiles index = 0x93, 70-73 63-46 6e-6f(pointers)
+
+
 Town of Jova - AC 90
 Jova Woods 1 - E4 9F
 Jova Veros Bridge - 09 A0
