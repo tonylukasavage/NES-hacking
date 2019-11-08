@@ -1,4 +1,4 @@
-// Written by BloodSweatAndCode 
+// Written by BloodSweatAndCode
 // discord & twitch: BloodSweatAndCode
 // github: BloodSweatAndCode
 //
@@ -7,6 +7,7 @@
 state("fceux") {
 	byte items: 0x003B1388, 0x91;
 	byte whip: 0x003B1388, 0x434;
+	byte carry: 0x003B1388, 0x92;
 	byte objectIndex : 0x003B1388, 0x3BA;
 	byte map1 : 0x003B1388, 0x3d;
 	byte map2 : 0x003B1388, 0x3e;
@@ -32,6 +33,7 @@ startup {
 	settings.Add("whip_flame", false, "Flame Whip", "whips");
 
 	settings.Add("misc", true, "Misc");
+	settings.Add("magic_cross", false, "Magic Cross", "misc");
 	settings.Add("blob_boost", true, "Blob Boost", "misc");
 	settings.Add("drac_death", true, "Dracula Death Explosion End", "misc");
 
@@ -55,14 +57,14 @@ start {
 split {
 
 	// crystals
-	if ((old.items & 32) == 0 && (current.items & 32) == 32) {  
+	if ((old.items & 32) == 0 && (current.items & 32) == 32) {
 		if (settings["crystal_red"] && (current.items & 64) == 64) {
 			vars.DebugOutput("red crystal");
 			return true;
 		} else if (settings["crystal_white"]) {
 			vars.DebugOutput("white crystal");
 			return true;
-		} 
+		}
 	}
 	if (settings["crystal_blue"] && (old.items & 64) == 0 && (current.items & 64) == 64) {  vars.DebugOutput("blue crystal"); return true; }
 
@@ -80,10 +82,13 @@ split {
 	if (settings["part_ring"] && (old.items & 16) == 0 && (current.items & 16) == 16) {  vars.DebugOutput("ring"); return true; }
 
 	// dracula death explosion end
-	if (settings["drac_death"] && old.objectIndex == 0x4D && current.objectIndex != 0x4D) { 
-		vars.DebugOutput("dracula death explosion end"); 
-		return true; 
+	if (settings["drac_death"] && old.objectIndex == 0x4D && current.objectIndex != 0x4D) {
+		vars.DebugOutput("dracula death explosion end");
+		return true;
 	}
+
+	// magic cross
+	if (settings["magic_cross"] && (old.carry & 2) == 0 && (current.carry & 2) == 2) {  vars.DebugOutput("magic cross"); return true; }
 
 	// blob boost
 	if (settings["blob_boost"] && old.map1 == 0x78 && old.map2 == 0xAF && current.map1 == 0x4B && current.map2 == 0xAF) {
